@@ -163,3 +163,4 @@ cython_debug/
 # manim
 partial_movie_files/
 *.mp4
+*/media/
