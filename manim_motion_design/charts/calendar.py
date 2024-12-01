@@ -7,6 +7,22 @@ except ModuleNotFoundError:
     import manim as mn
 
 
+def create_calendars(year, months=(1, 12), **kwargs):
+    calendars = mn.Group()
+    for ii in range(months[0], months[1]+1):
+        month = ii
+        if month <= 0:
+            month += 12
+            year -= 1
+        if month > 12:
+            month -= 12
+            year += 1
+
+        date = datetime.date(year, month, 1)
+        calendars.add(MonthlyCalendar(date, **kwargs))
+    return calendars
+
+
 class MonthlyCalendar(mn.Group):
     FONT = "Arial"
     FONT_SIZE = 30
